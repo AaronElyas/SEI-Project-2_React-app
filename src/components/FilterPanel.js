@@ -7,6 +7,7 @@ const FilterPanel = () => {
   const [country, setCountry] = useState('us')
   const [language, setLanguage] = useState('English')
   const [excludeExplicitContent, setExcludeExplicitContent] = useState('1')
+  const [formData, setFormData] = useState(null)
 
   const languages = [
     'Any language',
@@ -66,7 +67,7 @@ const FilterPanel = () => {
         {
           headers: { 'X-ListenAPI-Key': process.env.REACT_APP_ListenNotesKey },
         })
-      console.log(data)
+      setFormData(data)
     } catch (err) {
       console.log(err)
     }
@@ -74,7 +75,7 @@ const FilterPanel = () => {
 
 
   return (
-    <form className='column is-half is-offset-one-quarter box' onClick={handleSubmit}>
+    <form id='filter-form' className='column is-half is-offset-one-quarter box' onClick={handleSubmit}>
       <div>
         <h2>Tailored Recommendations</h2>
       </div>

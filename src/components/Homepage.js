@@ -7,8 +7,8 @@ const Homepage = () => {
   return (
     <>
       <NavBar />
-      <section className="hero is-fullheight-with-navbar">
-        <section className="hero-body columns is-one-third">
+      <section>
+        <section className="columns is-one-third is-flex is-align-content-flex-start">
           <section className="column is-one-third">
             <div className="container">
               <FilterPanel />
