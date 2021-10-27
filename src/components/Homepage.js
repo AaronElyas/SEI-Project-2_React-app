@@ -68,12 +68,13 @@ const Homepage = () => {
         {
           headers: { 'X-ListenAPI-Key': process.env.REACT_APP_ListenNotesKey },
         })
-      console.log(data)
+      console.log(data.podcasts)
       setFormData(data)
     } catch (err) {
       console.log(err)
     }
   }
+
 
 
   return (
@@ -201,7 +202,28 @@ const Homepage = () => {
           </section>
           <section className="column is-two-thirds">
             <div className="container">
-              <Recommendations formData={formData}/>
+              <div className="columns is-multiline">
+                {formData ?
+                  formData.podcasts.map(podcast => {
+                    return (
+                      <div key={podcast.id} className="column is-one-quarter-desktop is-one-third-tablet">
+                        <div className="card">
+                          <div className="card-image">
+                            <figure className="image image-is-1by1">
+                              <img src={podcast.image} alt={podcast.title}></img>
+                            </figure>
+                          </div>
+                          <div className="card-content">
+                            <h3 className="has-text-weight-bold">{podcast.title}</h3>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  })
+                  :
+                  <h2>Something went wrong</h2>
+                }
+              </div>
             </div>
           </section>
         </section>
@@ -231,3 +253,6 @@ export default Homepage
 
 
 // Discover By Genre
+
+
+// <Recommendations formData={formData}/>
