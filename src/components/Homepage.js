@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 // import NavBar from './NavBar'
 import Recommendations from './Recommendations'
@@ -11,6 +12,8 @@ const Homepage = () => {
   const [language, setLanguage] = useState('English')
   const [excludeExplicitContent, setExcludeExplicitContent] = useState('1')
   const [formData, setFormData] = useState(null)
+
+  // const history = useHistory()
 
   const languages = [
     'Any language',
@@ -69,12 +72,22 @@ const Homepage = () => {
           headers: { 'X-ListenAPI-Key': process.env.REACT_APP_ListenNotesKey },
         })
       console.log(data.podcasts)
+      // history.push('/recommendations') - this does not work
       setFormData(data)
     } catch (err) {
       console.log(err)
     }
   }
 
+  // This commented-out useEffect does work to change the URL path to the Recommendations page:
+
+  // useEffect(() => {
+  //   if (formData === null) {
+  //     return
+  //   } else {
+  //     history.push('/recommendations')
+  //   }
+  // }, [formData])
 
 
   return (
@@ -83,7 +96,7 @@ const Homepage = () => {
         <section className="columns is-one-third is-flex is-align-content-flex-start">
           <section className="column is-one-third">
             <div className="container">
-              <form id='filter-form' className='column is-half is-offset-one-quarter box' onClick={handleSubmit}>
+              <form id='filter-form' className='column is-half is-offset-one-quarter box' onSubmit={handleSubmit}>
                 <div>
                   <h2>Tailored Recommendations</h2>
                 </div>
@@ -203,6 +216,7 @@ const Homepage = () => {
           <section className="column is-two-thirds">
             <div className="container">
               <div className="columns is-multiline">
+                {/* <Recommendations formData={formData}/> */}
                 {formData ?
                   formData.podcasts.map(podcast => {
                     return (

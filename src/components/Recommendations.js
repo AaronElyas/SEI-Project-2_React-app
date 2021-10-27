@@ -9,7 +9,7 @@ const Recommendations = (formData) => {
     <section className="section">
       <div className="container">
         <div className="columns is-multiline">
-          {formData.podcasts.map(podcast => {
+          {/* {formData.podcasts.map(podcast => {
             return (
               <div key={podcast.id} className="column is-one-quarter-desktop is-one-third-tablet">
                 <div className="card">
@@ -24,7 +24,7 @@ const Recommendations = (formData) => {
                 </div>
               </div>
             )
-          })}
+          })} */}
         </div>
       </div>
     </section>
