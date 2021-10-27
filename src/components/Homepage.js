@@ -1,10 +1,12 @@
 import React from 'react'
+import NavBar from './NavBar'
 import FilterPanel from './FilterPanel'
 
 const Homepage = () => {
 
   return (
     <>
+      <NavBar />
       <section className="hero is-fullheight-with-navbar">
         <section className="hero-body columns is-one-third">
           <section className="column is-one-third">
