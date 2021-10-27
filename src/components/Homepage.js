@@ -1,20 +1,24 @@
 import React from 'react'
+import FilterPanel from './FilterPanel'
 
 const Homepage = () => {
 
   return (
     <>
-      <section className="hero columns is-fullheight-with-navbar">
-        <section className="section column is-one-third">
-          <div className="container">
+      <section className="hero is-fullheight-with-navbar">
+        <section className="hero-body columns is-one-third">
+          <section className="column is-one-third">
+            <div className="container">
+              <FilterPanel />
+            </div>
+          </section>
+          <section className="column is-two-thirds">
+            <div className="container">
 
-          </div>
+            </div>
+          </section>
         </section>
-        <section className="section column is-two-thirds">
-          <div className="container">
 
-          </div>
-        </section>
       </section>
 
     </>
