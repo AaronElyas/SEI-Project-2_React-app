@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import NavBar from './NavBar'
+// import NavBar from './NavBar'
+import Recommendations from './Recommendations'
 // import FilterPanel from './FilterPanel'
 
 const Homepage = () => {
@@ -67,6 +68,7 @@ const Homepage = () => {
         {
           headers: { 'X-ListenAPI-Key': process.env.REACT_APP_ListenNotesKey },
         })
+      console.log(data)
       setFormData(data)
     } catch (err) {
       console.log(err)
@@ -76,7 +78,6 @@ const Homepage = () => {
 
   return (
     <>
-      <NavBar />
       <section>
         <section className="columns is-one-third is-flex is-align-content-flex-start">
           <section className="column is-one-third">
@@ -200,7 +201,7 @@ const Homepage = () => {
           </section>
           <section className="column is-two-thirds">
             <div className="container">
-
+              <Recommendations formData={formData}/>
             </div>
           </section>
         </section>
