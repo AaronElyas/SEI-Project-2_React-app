@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import axios from 'axios'
+// import axios from 'axios'
 import Recommendations from './Recommendations'
 
 const Homepage = () => {
@@ -11,7 +11,9 @@ const Homepage = () => {
   const [excludeExplicitContent, setExcludeExplicitContent] = useState('1')
   const [formData, setFormData] = useState(null)
 
-  // const history = useHistory()
+  const [recommendationsURL, setRecommendationsURL] = useState(null)
+
+  const history = useHistory()
 
   const languages = [
     'Any language',
@@ -64,28 +66,36 @@ const Homepage = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    try {
-      const { data } = await axios.get(`https://listen-api.listennotes.com/api/v2/best_podcasts?genre_id=${genre}&page=2&publisher_region=${country}&language=${language}&sort=listen_score&safe_mode=${excludeExplicitContent}`,
-        {
-          headers: { 'X-ListenAPI-Key': process.env.REACT_APP_ListenNotesKey },
-        })
-      console.log(data.podcasts)
-      // history.push('/recommendations') - this does not work
-      setFormData(data)
-    } catch (err) {
-      console.log(err)
-    }
+    setRecommendationsURL(`https://listen-api.listennotes.com/api/v2/best_podcasts?genre_id=${genre}&page=2&publisher_region=${country}&language=${language}&sort=listen_score&safe_mode=${excludeExplicitContent}`)
+    // history.push('/recommendations')
+    setFormData(true)
   }
+
+
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault()
+  //   try {
+  //     const { data } = await axios.get(`https://listen-api.listennotes.com/api/v2/best_podcasts?genre_id=${genre}&page=2&publisher_region=${country}&language=${language}&sort=listen_score&safe_mode=${excludeExplicitContent}`,
+  //       {
+  //         headers: { 'X-ListenAPI-Key': process.env.REACT_APP_ListenNotesKey },
+  //       })
+  //     console.log(data.podcasts)
+  //     history.push('/recommendations')
+  //     setFormData(data)
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
   // This commented-out useEffect does work to change the URL path to the Recommendations page:
 
-  // useEffect(() => {
-  //   if (formData === null) {
-  //     return
-  //   } else {
-  //     history.push('/recommendations')
-  //   }
-  // }, [formData])
+  useEffect(() => {
+    if (recommendationsURL === null) {
+      return
+    } else {
+      history.push('/recommendations')
+    }
+  }, [recommendationsURL])
 
 
   return (
@@ -213,7 +223,7 @@ const Homepage = () => {
           </section>
           <section className="column is-two-thirds">
             {formData ?
-              <Recommendations formData={formData} />
+              <Recommendations recommendationsURL={recommendationsURL} />
               :
               <div>
                 <h2>Something went wrong</h2>

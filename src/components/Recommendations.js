@@ -1,9 +1,43 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 // import NavBar from './NavBar'
 
-const Recommendations = ({ formData: { podcasts } }) => { // fomData is a key on the props object, so we are taking the formData property and deconstructing it to get only the podcasts property
+const Recommendations = (props) => { // fomData is a key on the props object, so we are taking the formData property and deconstructing it to get only the podcasts property
 
-  console.log(podcasts)
+  console.log(props)
+
+  const [podcasts, setPodcasts] = useState([])
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const { data } = await axios.get(props.recommendationsURL,
+          {
+            headers: { 'X-ListenAPI-Key': process.env.REACT_APP_ListenNotesKey },
+          })
+        console.log(data)
+        setPodcasts(data)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    getData()
+  }, [])
+
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault()
+  //   try {
+  //     const { data } = await axios.get(`https://listen-api.listennotes.com/api/v2/best_podcasts?genre_id=${genre}&page=2&publisher_region=${country}&language=${language}&sort=listen_score&safe_mode=${excludeExplicitContent}`,
+  //       {
+  //         headers: { 'X-ListenAPI-Key': process.env.REACT_APP_ListenNotesKey },
+  //       })
+  //     console.log(data.podcasts)
+  //     history.push('/recommendations')
+  //     setFormData(data)
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
   return (
     <section className="section">
