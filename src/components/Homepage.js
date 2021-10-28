@@ -52,7 +52,7 @@ const Homepage = () => {
     'Vietnamese'
   ]
 
-  const imageArray = ['💰', '/assets/local.jpg', '/assets/TV.jpg', 'assets/tech.jpg', 'assets/crime.jpg', 'assets/arts.jpg', '/assets/business.jpg',
+  const imageArray = ['💰', '🏘', '🎥', 'assets/tech.jpg', 'assets/crime.jpg', 'assets/arts.jpg', '/assets/business.jpg',
     '/assets/comedy.jpg', '/assets/education.jpg', '/assets/fiction.jpg', '/assets/gov.jpg', '/assets/fitness.jpg', '/assets/history.jpg', '/assets/fam.jpg',
     '/assets/leisure.jpg', '/assets/music.jpg', '/assets/news.jpg', '/assets/religion.jpg', '/assets/science.jpg', '/assets/culture.jpg', '/assets/sports.jpg']
 
@@ -244,6 +244,30 @@ const Homepage = () => {
             </div>
           </section>
           <section className="column is-two-thirds">
+            <div className="card">
+              <div className="card-header">
+                <div className="card-header-title title">Podcast Title</div>
+              </div>
+              <div className="card-image">
+                <figure className="image image-is-1by1">
+                  {/* <img src={podcast.image} alt={podcast.title}></img> */}
+                </figure>
+              </div>
+              <div className="card-content">
+                <div>
+                  <h3 className="has-text-weight-bold subtitle">Publisher</h3>
+                </div>
+                <div>
+                  <p className="mt-4">Description</p>
+                </div>
+                <div>
+                  <p className="has-text-weight-bold">Country</p>
+                </div>
+                <div>
+                  <p className="has-text-weight-bold">Language</p>
+                </div>
+              </div>
+            </div>
             <section className="section">
               <div className="container">
                 <div>
@@ -255,9 +279,12 @@ const Homepage = () => {
                       <div key={item.id} className="column is-one-third-desktop is-one-half-tablet">
                         <div className="card">
                           <div className="card-image">
-                            <figure className="image image-is-1by1">
+                            {/* <figure className="image image-is-1by1">
                               <p className='emoji'>{imageArray[index]}</p>
-                            </figure>
+                            </figure> */}
+                            <span role="img" aria-label="logo" className="title is-flex is-justify-content-center">
+                              <p className='emoji'>{imageArray[index]}</p>
+                            </span>
                           </div>
                           <div className='card-footer'>
                             <h3 className='card-footer-item has-text-weight-bold'>{item.name}</h3>
