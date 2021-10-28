@@ -59,7 +59,7 @@ const ShowGenres = () => {
         <div key={item.id} className="column is-one-third-desktop is-one-half-tablet">
           <Link to={{ pathname: '/genrerecommendations', state: item.id }}>
             <div className="card">
-              <div className="card-image">
+              <div id="emoji-background" className="card-image">
                 <span role="img" aria-label="logo" className="title is-flex is-justify-content-center">
                   <p className='emoji'>{emojisObject[item.id]}</p>
                 </span>

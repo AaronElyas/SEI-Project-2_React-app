@@ -30,13 +30,13 @@ const GenreRecommendations = () => {
     <section className="section">
       <div className="container">
         <div>
-          <h1 className="is-size-3 has-text-centered has-text-weight-bold">Top Recommendations in Genre</h1>
+          <h1 className="is-size-3 has-text-centered has-text-weight-bold mb-5">Top Recommendations in Genre</h1>
         </div>
         <div className="columns is-multiline">
           {podcasts.map(podcast => {
             return (
               <div key={podcast.id} className="column is-one-quarter-desktop is-one-third-tablet">
-                <div className="card" onClick={() => history.push(`/podcastshow/${podcast.id}`)}>
+                <div className="card card-cursor" onClick={() => history.push(`/podcastshow/${podcast.id}`)}>
                   <div className="card-image">
                     <figure className="image image-is-1by1">
                       <img src={podcast.image} alt={podcast.title}></img>

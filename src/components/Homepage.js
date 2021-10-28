@@ -135,14 +135,14 @@ const Homepage = () => {
         <section className="columns is-one-third is-flex is-align-content-flex-start">
           <section className="column is-one-third">
             <div className="container">
-              <form id='filter-form' className='column is-half is-offset-one-quarter box'>
+              <form id='filter-form' className='column is-half is-offset-one-quarter box p-5 has-background-warning'>
                 <div>
-                  <h2>Tailored Recommendations</h2>
+                  <h2 className="is-size-5 has-text-centered has-text-weight-bold p-2">Get Tailored Podcast Recommendations</h2>
                 </div>
-                <div className='field'>
+                <div className='field pt-4 px-5'>
                   <label className='label'>Genre</label>
                   <div className='control'>
-                    <select name='genres' className='select is-fullwidth' onChange={handleChange}>
+                    <select id='select1' name='genres' className='select is-fullwidth has-text-weight-bold' onChange={handleChange}>
                       <option value='144'>Personal Finance</option>
                       <option value='151'>Locally Focused</option>
                       <option value='68'>TV & Film</option>
@@ -168,10 +168,10 @@ const Homepage = () => {
                   </div>
                   {/* {errors.name && <p className='help is-danger'>{errors.name}</p>} */}
                 </div>
-                <div className='field'>
+                <div className='field pt-2 px-5'>
                   <label className='label'>Country</label>
                   <div className='control'>
-                    <select name='countries' className='select is-fullwidth' onChange={handleChange}>
+                    <select id='select2' name='countries' className='select is-fullwidth has-text-weight-bold' onChange={handleChange}>
                       <option value='us'>All</option>
                       <option value='ar'>AR - Argentina</option>
                       <option value='au'>AU - Australia</option>
@@ -213,10 +213,10 @@ const Homepage = () => {
                   </div>
                   {/* {errors.origin && <p className='help is-danger'>{errors.origin}</p>} */}
                 </div>
-                <div className='field'>
+                <div className='field pt-2 px-5'>
                   <label className='label'>Languages</label>
                   <div className='control'>
-                    <select name='languages' className='select is-fullwidth' onChange={handleChange}>
+                    <select id='select3' name='languages' className='select is-fullwidth has-text-weight-bold' onChange={handleChange}>
                       {languages.map(language => {
                         return (
                           <option key={language}>{language}</option>
@@ -226,18 +226,18 @@ const Homepage = () => {
                   </div>
                   {/* {errors.image && <p className='help is-danger'>{errors.image}</p>} */}
                 </div>
-                <div className='field'>
-                  <label className='label'>Exclude podcasts with explicit content</label>
+                <div className='field pt-2 px-5'>
+                  <label className='label'>Exclude explicit content</label>
                   <div className='control'>
-                    <select name='excludeExplicitContent' className='select is-fullwidth' onChange={handleChange}>
+                    <select id='select4' name='excludeExplicitContent' className='select is-fullwidth has-text-weight-bold' onChange={handleChange}>
                       <option value='1'>Yes</option>
                       <option value='0'>No</option>
                     </select>
                   </div>
                   {/* {errors.tastingNotes && <p className='help is-danger'>{errors.tastingNotes}</p>} */}
                 </div>
-                <div className='field'>
-                  <Link to={{ pathname: '/recommendations', state: formData }} className='button is-fullwidth is-warning'>Find podcasts!</Link>
+                <div className='field pt-3 px-5'>
+                  <Link to={{ pathname: '/recommendations', state: formData }} className='button is-fullwidth is-link is-rounded has-text-weight-bold mb-3'>Find podcasts!</Link>
                   {/* <button type='submit' className='button is-fullwidth is-warning'>Find podcasts!</button> */}
                 </div>
               </form >
@@ -247,7 +247,7 @@ const Homepage = () => {
             <section className="section">
               <div className="container">
                 <div>
-                  <h1 className="is-size-3 has-text-centered has-text-weight-bold">Discover Podcasts by Genre</h1>
+                  <h1 className="is-size-3 has-text-centered has-text-weight-bold mb-5">Discover Podcasts by Genre</h1>
                 </div>
                 <div className="columns is-multiline">
                   <ShowGenres />
