@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory, useLocation } from 'react-router-dom'
 import axios from 'axios'
-import { useLocation, useHistory } from 'react-router-dom'
 
-const Recommendations = () => { // fomData is a key on the props object, so we are taking the formData property and deconstructing it to get only the podcasts property
+const GenreRecommendations = () => {
 
   const location = useLocation()
   const history = useHistory()
+
   const [podcasts, setPodcasts] = useState([])
 
   useEffect(() => {
+    console.log(location)
     const getData = async () => {
       try {
         // eslint-disable-next-line no-undef
-        const { data } = await axios.get(`https://listen-api.listennotes.com/api/v2/best_podcasts?genre_id=${location.state.genres}&page=2&publisher_region=${location.state.countries}&language=${location.state.languages}&sort=listen_score&safe_mode=${location.state.excludeExplicitContent}`,
+        const { data } = await axios.get(`https://listen-api.listennotes.com/api/v2/best_podcasts?genre_id=${location.state}&page=2&publisher_region=us&sort=listen_score&safe_mode=0`,
           {
             headers: { 'X-ListenAPI-Key': process.env.REACT_APP_ListenNotesKey },
           })
@@ -24,32 +26,11 @@ const Recommendations = () => { // fomData is a key on the props object, so we a
     getData()
   }, [])
 
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault()
-  //   try {
-  //     const { data } = await axios.get(`https://listen-api.listennotes.com/api/v2/best_podcasts?genre_id=${genre}&page=2&publisher_region=${country}&language=${language}&sort=listen_score&safe_mode=${excludeExplicitContent}`,
-  //       {
-  //         headers: { 'X-ListenAPI-Key': process.env.REACT_APP_ListenNotesKey },
-  //       })
-  //     console.log(data.podcasts)
-  //     history.push('/recommendations')
-  //     setFormData(data)
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
-
-  // const handleClick = (event) => {
-  //   console.log(event.target.value)
-  //   history.push(`/podcastshow/${event.target.dataset.id}`)
-  // }
-
-
   return (
     <section className="section">
       <div className="container">
         <div>
-          <h1 className="is-size-3 has-text-centered has-text-weight-bold">Your podcast recommendations</h1>
+          <h1 className="is-size-3 has-text-centered has-text-weight-bold">Top Recommendations in Genre</h1>
         </div>
         <div className="columns is-multiline">
           {podcasts.map(podcast => {
@@ -73,6 +54,7 @@ const Recommendations = () => { // fomData is a key on the props object, so we a
     </section>
   )
 
+
 }
 
-export default Recommendations
+export default GenreRecommendations
