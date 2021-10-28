@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
-import axios from 'axios'
-import Recommendations from './Recommendations'
+import { Link } from 'react-router-dom'
+// import axios from 'axios'
+// import Recommendations from './Recommendations'
+import ShowGenres from './ShowGenres'
 
 const Homepage = () => {
 
-  const [genre, setGenre] = useState('')
-  const [country, setCountry] = useState('us')
-  const [language, setLanguage] = useState('English')
-  const [excludeExplicitContent, setExcludeExplicitContent] = useState('1')
+  // const [genre, setGenre] = useState('')
+  // const [country, setCountry] = useState('us')
+  // const [language, setLanguage] = useState('English')
+  // const [excludeExplicitContent, setExcludeExplicitContent] = useState('1')
   const [formData, setFormData] = useState(null)
-  const [genreData, setGenreData] = useState([])
+  // const [genreData, setGenreData] = useState([])
 
-  const [recommendationsURL, setRecommendationsURL] = useState(null)
+  // const [recommendationsURL, setRecommendationsURL] = useState(null)
 
-  const history = useHistory()
+  // const history = useHistory()
 
   const languages = [
     'Any language',
@@ -52,46 +53,54 @@ const Homepage = () => {
     'Vietnamese'
   ]
 
-  const imageArray = ['💰', '🏘', '🎥', 'assets/tech.jpg', 'assets/crime.jpg', 'assets/arts.jpg', '/assets/business.jpg',
-    '/assets/comedy.jpg', '/assets/education.jpg', '/assets/fiction.jpg', '/assets/gov.jpg', '/assets/fitness.jpg', '/assets/history.jpg', '/assets/fam.jpg',
-    '/assets/leisure.jpg', '/assets/music.jpg', '/assets/news.jpg', '/assets/religion.jpg', '/assets/science.jpg', '/assets/culture.jpg', '/assets/sports.jpg']
+  // const imageArray = ['💰', '🏘', '🎥', 'assets/tech.jpg', 'assets/crime.jpg', 'assets/arts.jpg', '/assets/business.jpg',
+  //   '/assets/comedy.jpg', '/assets/education.jpg', '/assets/fiction.jpg', '/assets/gov.jpg', '/assets/fitness.jpg', '/assets/history.jpg', '/assets/fam.jpg',
+  //   '/assets/leisure.jpg', '/assets/music.jpg', '/assets/news.jpg', '/assets/religion.jpg', '/assets/science.jpg', '/assets/culture.jpg', '/assets/sports.jpg']
+
+  const handleChange = (event) => {
+    const newFormData = { ...formData, [event.target.name]: event.target.value }
+    console.log(newFormData)
+    setFormData(newFormData)
+  }
+
+  console.log('location passes the state', formData)
 
   /* Genres API request: */
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const { data: { genres } } = await axios.get('https://listen-api.listennotes.com/api/v2/genres?top_level_only=1', {
-          headers: { 'X-ListenAPI-Key': process.env.REACT_APP_ListenNotesKey },
-        })
-        setGenreData(genres)
-        console.log(genres)
-      } catch {
-        console.warn('failure to get API data')
-      }
-    }
-    getData()
-  }, [])
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     try {
+  //       const { data: { genres } } = await axios.get('https://listen-api.listennotes.com/api/v2/genres?top_level_only=1', {
+  //         headers: { 'X-ListenAPI-Key': process.env.REACT_APP_ListenNotesKey },
+  //       })
+  //       setGenreData(genres)
+  //       console.log(genres)
+  //     } catch {
+  //       console.warn('failure to get API data')
+  //     }
+  //   }
+  //   getData()
+  // }, [])
 
 
-  const handleSelect = (event) => {
-    if (event.target.name === 'genres') {
-      setGenre(event.target.value)
-    } else if (event.target.name === 'countries') {
-      setCountry(event.target.value)
-    } else if (event.target.name === 'languages') {
-      setLanguage(event.target.value)
-    } else {
-      setExcludeExplicitContent(event.target.value)
-    }
-  }
+  // const handleSelect = (event) => {
+  //   if (event.target.name === 'genres') {
+  //     setGenre(event.target.value)
+  //   } else if (event.target.name === 'countries') {
+  //     setCountry(event.target.value)
+  //   } else if (event.target.name === 'languages') {
+  //     setLanguage(event.target.value)
+  //   } else {
+  //     setExcludeExplicitContent(event.target.value)
+  //   }
+  // }
 
 
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-    setRecommendationsURL(`https://listen-api.listennotes.com/api/v2/best_podcasts?genre_id=${genre}&page=2&publisher_region=${country}&language=${language}&sort=listen_score&safe_mode=${excludeExplicitContent}`)
-    // history.push('/recommendations')
-    setFormData(true)
-  }
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault()
+  //   setRecommendationsURL(`https://listen-api.listennotes.com/api/v2/best_podcasts?genre_id=${genre}&page=2&publisher_region=${country}&language=${language}&sort=listen_score&safe_mode=${excludeExplicitContent}`)
+  //   // history.push('/recommendations')
+  //   setFormData(true)
+  // }
 
 
   // const handleSubmit = async (event) => {
@@ -126,14 +135,14 @@ const Homepage = () => {
         <section className="columns is-one-third is-flex is-align-content-flex-start">
           <section className="column is-one-third">
             <div className="container">
-              <form id='filter-form' className='column is-half is-offset-one-quarter box' onSubmit={handleSubmit}>
+              <form id='filter-form' className='column is-half is-offset-one-quarter box'>
                 <div>
                   <h2>Tailored Recommendations</h2>
                 </div>
                 <div className='field'>
                   <label className='label'>Genre</label>
                   <div className='control'>
-                    <select name='genres' className='select is-fullwidth' onChange={handleSelect}>
+                    <select name='genres' className='select is-fullwidth' onChange={handleChange}>
                       <option value=''>All</option>
                       <option value='144'>Personal Finance</option>
                       <option value='151'>Locally Focused</option>
@@ -163,7 +172,7 @@ const Homepage = () => {
                 <div className='field'>
                   <label className='label'>Country</label>
                   <div className='control'>
-                    <select name='countries' className='select is-fullwidth' onChange={handleSelect}>
+                    <select name='countries' className='select is-fullwidth' onChange={handleChange}>
                       <option value='us'>All</option>
                       <option value='ar'>AR - Argentina</option>
                       <option value='au'>AU - Australia</option>
@@ -208,7 +217,7 @@ const Homepage = () => {
                 <div className='field'>
                   <label className='label'>Languages</label>
                   <div className='control'>
-                    <select name='languages' className='select is-fullwidth' onChange={handleSelect}>
+                    <select name='languages' className='select is-fullwidth' onChange={handleChange}>
                       {languages.map(language => {
                         return (
                           <option key={language}>{language}</option>
@@ -221,7 +230,7 @@ const Homepage = () => {
                 <div className='field'>
                   <label className='label'>Exclude podcasts with explicit content</label>
                   <div className='control'>
-                    <select name='exclude-explicit-content' className='select is-fullwidth' onChange={handleSelect}>
+                    <select name='excludeExplicitContent' className='select is-fullwidth' onChange={handleChange}>
                       <option value='1'>Yes</option>
                       <option value='0'>No</option>
                     </select>
@@ -229,7 +238,8 @@ const Homepage = () => {
                   {/* {errors.tastingNotes && <p className='help is-danger'>{errors.tastingNotes}</p>} */}
                 </div>
                 <div className='field'>
-                  <button type='submit' className='button is-fullwidth is-warning'>Find podcasts!</button>
+                  <Link to={{ pathname: '/recommendations', state: formData }} className='button is-fullwidth is-warning'>Find podcasts!</Link>
+                  {/* <button type='submit' className='button is-fullwidth is-warning'>Find podcasts!</button> */}
                 </div>
               </form >
               {/* <FilterPanel
@@ -274,28 +284,7 @@ const Homepage = () => {
                   <h1 className="is-size-3 has-text-centered has-text-weight-bold">Discover Podcasts by Genre</h1>
                 </div>
                 <div className="columns is-multiline">
-                  {genreData.map((item, index) => {
-                    return (
-                      <div key={item.id} className="column is-one-third-desktop is-one-half-tablet">
-                        <div className="card">
-                          <div className="card-image">
-                            {/* <figure className="image image-is-1by1">
-                              <p className='emoji'>{imageArray[index]}</p>
-                            </figure> */}
-                            <span role="img" aria-label="logo" className="title is-flex is-justify-content-center">
-                              <p className='emoji'>{imageArray[index]}</p>
-                            </span>
-                          </div>
-                          <div className='card-footer'>
-                            <h3 className='card-footer-item has-text-weight-bold'>{item.name}</h3>
-                          </div>
-                          {/* <div className="card-content">
-                            <h3 className="has-text-weight-bold">{item.name}</h3>
-                          </div> */}
-                        </div>
-                      </div>
-                    )
-                  })}
+                  <ShowGenres />
                 </div>
               </div>
             </section>
