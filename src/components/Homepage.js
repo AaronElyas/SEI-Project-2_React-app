@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
-// import NavBar from './NavBar'
 import Recommendations from './Recommendations'
-// import FilterPanel from './FilterPanel'
 
 const Homepage = () => {
 
