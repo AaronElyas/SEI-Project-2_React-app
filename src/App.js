@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import Homepage from './components/Homepage'
 import Recommendations from './components/Recommendations'
+import PodcastShow from './components/PodcastShow'
 
 
 
@@ -15,8 +16,9 @@ const App = () => {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route exact path='/' component={Homepage}/>
-        <Route exact path='/recommendations' component={Recommendations}/>
+        <Route exact path='/' component={Homepage} />
+        <Route exact path='/recommendations' component={Recommendations} />
+        <Route exact path='/podcastshow' component={PodcastShow} />
       </Switch>
     </BrowserRouter>
   )
