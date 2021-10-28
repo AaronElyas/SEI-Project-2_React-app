@@ -10,7 +10,7 @@ const Homepage = () => {
   // const [country, setCountry] = useState('us')
   // const [language, setLanguage] = useState('English')
   // const [excludeExplicitContent, setExcludeExplicitContent] = useState('1')
-  const [formData, setFormData] = useState(null)
+  const [formData, setFormData] = useState({ genres: 144 })
   // const [genreData, setGenreData] = useState([])
 
   // const [recommendationsURL, setRecommendationsURL] = useState(null)
@@ -143,7 +143,6 @@ const Homepage = () => {
                   <label className='label'>Genre</label>
                   <div className='control'>
                     <select name='genres' className='select is-fullwidth' onChange={handleChange}>
-                      <option value=''>All</option>
                       <option value='144'>Personal Finance</option>
                       <option value='151'>Locally Focused</option>
                       <option value='68'>TV & Film</option>
@@ -242,42 +241,9 @@ const Homepage = () => {
                   {/* <button type='submit' className='button is-fullwidth is-warning'>Find podcasts!</button> */}
                 </div>
               </form >
-              {/* <FilterPanel
-                genre={genre}
-                country={country}
-                language={language}
-                excludeExplicitContent={excludeExplicitContent}
-                formData={formData}
-                handleSelect={handleSelect}
-                handleSubmit={handleSubmit}
-              /> */}
             </div>
           </section>
           <section className="column is-two-thirds">
-            <div className="card">
-              <div className="card-header">
-                <div className="card-header-title title">Podcast Title</div>
-              </div>
-              <div className="card-image">
-                <figure className="image image-is-1by1">
-                  {/* <img src={podcast.image} alt={podcast.title}></img> */}
-                </figure>
-              </div>
-              <div className="card-content">
-                <div>
-                  <h3 className="has-text-weight-bold subtitle">Publisher</h3>
-                </div>
-                <div>
-                  <p className="mt-4">Description</p>
-                </div>
-                <div>
-                  <p className="has-text-weight-bold">Country</p>
-                </div>
-                <div>
-                  <p className="has-text-weight-bold">Language</p>
-                </div>
-              </div>
-            </div>
             <section className="section">
               <div className="container">
                 <div>
@@ -288,28 +254,6 @@ const Homepage = () => {
                 </div>
               </div>
             </section>
-            {formData ?
-              // <Recommendations recommendationsURL={recommendationsURL} />
-              <h1>formData has value</h1>
-              // genreData.map((item, index) => {
-              //   return (
-              //     <div key={item.id} data-id={item.id} id='genre-cards' className='card'>
-              //       <div className='card-image'>
-              //         <figure className='image is-4by3'>
-              //           <img src={imageArray[index]} alt={item.name} />
-              //         </figure>
-              //         <div className='card-footer'>
-              //           <p className='card-footer-item'>{item.name}</p>
-              //         </div>
-              //       </div>
-              //     </div>
-              //   )
-              // })
-              :
-              <div>
-                <h2>Something went wrong</h2>
-              </div>
-            }
           </section>
         </section>
 
