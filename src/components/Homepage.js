@@ -63,7 +63,7 @@ const Homepage = () => {
     }
   }
 
-  
+
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
@@ -178,7 +178,7 @@ const Homepage = () => {
                 <div className='field'>
                   <label className='label'>Languages</label>
                   <div className='control'>
-                    <select name='languages'className='select is-fullwidth' onChange={handleSelect}>
+                    <select name='languages' className='select is-fullwidth' onChange={handleSelect}>
                       {languages.map(language => {
                         return (
                           <option key={language}>{language}</option>
@@ -215,9 +215,13 @@ const Homepage = () => {
           </section>
           <section className="column is-two-thirds">
             <div className="container">
+              <div>
+                <h1 className="is-size-3 has-text-centered has-text-weight-bold">Your podcast recommendations</h1>
+              </div>
               <div className="columns is-multiline">
                 {/* <Recommendations formData={formData}/> */}
                 {formData ?
+
                   formData.podcasts.map(podcast => {
                     return (
                       <div key={podcast.id} className="column is-one-quarter-desktop is-one-third-tablet">
@@ -235,7 +239,9 @@ const Homepage = () => {
                     )
                   })
                   :
-                  <h2>Something went wrong</h2>
+                  <div>
+                    <h2>Something went wrong</h2>
+                  </div>
                 }
               </div>
             </div>
