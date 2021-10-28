@@ -1,6 +1,8 @@
 import React from 'react'
 
-const PodcastShow = () => {
+const PodcastShow = ({ data }) => {
+
+
 
   return (
     <div className="card">

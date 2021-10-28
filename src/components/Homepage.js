@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-// import axios from 'axios'
+import axios from 'axios'
 import Recommendations from './Recommendations'
 
 const Homepage = () => {
@@ -10,6 +10,7 @@ const Homepage = () => {
   const [language, setLanguage] = useState('English')
   const [excludeExplicitContent, setExcludeExplicitContent] = useState('1')
   const [formData, setFormData] = useState(null)
+  const [genreData, setGenreData] = useState([])
 
   const [recommendationsURL, setRecommendationsURL] = useState(null)
 
@@ -51,6 +52,27 @@ const Homepage = () => {
     'Vietnamese'
   ]
 
+  const imageArray = ['💰', '/assets/local.jpg', '/assets/TV.jpg', 'assets/tech.jpg', 'assets/crime.jpg', 'assets/arts.jpg', '/assets/business.jpg',
+    '/assets/comedy.jpg', '/assets/education.jpg', '/assets/fiction.jpg', '/assets/gov.jpg', '/assets/fitness.jpg', '/assets/history.jpg', '/assets/fam.jpg',
+    '/assets/leisure.jpg', '/assets/music.jpg', '/assets/news.jpg', '/assets/religion.jpg', '/assets/science.jpg', '/assets/culture.jpg', '/assets/sports.jpg']
+
+  /* Genres API request: */
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const { data: { genres } } = await axios.get('https://listen-api.listennotes.com/api/v2/genres?top_level_only=1', {
+          headers: { 'X-ListenAPI-Key': process.env.REACT_APP_ListenNotesKey },
+        })
+        setGenreData(genres)
+        console.log(genres)
+      } catch {
+        console.warn('failure to get API data')
+      }
+    }
+    getData()
+  }, [])
+
+
   const handleSelect = (event) => {
     if (event.target.name === 'genres') {
       setGenre(event.target.value)
@@ -89,13 +111,13 @@ const Homepage = () => {
 
   // This commented-out useEffect does work to change the URL path to the Recommendations page:
 
-  useEffect(() => {
-    if (recommendationsURL === null) {
-      return
-    } else {
-      history.push('/recommendations')
-    }
-  }, [recommendationsURL])
+  // useEffect(() => {
+  //   if (recommendationsURL === null) {
+  //     return
+  //   } else {
+  //     history.push('/recommendations')
+  //   }
+  // }, [recommendationsURL])
 
 
   return (
@@ -222,8 +244,51 @@ const Homepage = () => {
             </div>
           </section>
           <section className="column is-two-thirds">
+            <section className="section">
+              <div className="container">
+                <div>
+                  <h1 className="is-size-3 has-text-centered has-text-weight-bold">Discover Podcasts by Genre</h1>
+                </div>
+                <div className="columns is-multiline">
+                  {genreData.map((item, index) => {
+                    return (
+                      <div key={item.id} className="column is-one-third-desktop is-one-half-tablet">
+                        <div className="card">
+                          <div className="card-image">
+                            <figure className="image image-is-1by1">
+                              <p className='emoji'>{imageArray[index]}</p>
+                            </figure>
+                          </div>
+                          <div className='card-footer'>
+                            <h3 className='card-footer-item has-text-weight-bold'>{item.name}</h3>
+                          </div>
+                          {/* <div className="card-content">
+                            <h3 className="has-text-weight-bold">{item.name}</h3>
+                          </div> */}
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+            </section>
             {formData ?
-              <Recommendations recommendationsURL={recommendationsURL} />
+              // <Recommendations recommendationsURL={recommendationsURL} />
+              <h1>formData has value</h1>
+              // genreData.map((item, index) => {
+              //   return (
+              //     <div key={item.id} data-id={item.id} id='genre-cards' className='card'>
+              //       <div className='card-image'>
+              //         <figure className='image is-4by3'>
+              //           <img src={imageArray[index]} alt={item.name} />
+              //         </figure>
+              //         <div className='card-footer'>
+              //           <p className='card-footer-item'>{item.name}</p>
+              //         </div>
+              //       </div>
+              //     </div>
+              //   )
+              // })
               :
               <div>
                 <h2>Something went wrong</h2>

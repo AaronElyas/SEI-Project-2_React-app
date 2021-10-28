@@ -6,7 +6,6 @@ const NavBar = () => {
     <nav className="navbar is-link">
       <div className="container">
         <div className="navbar-brand">
-          
           <span role="img" aria-label="logo" className="title is-flex is-align-content-center">
             <Link to="/" className="ear-emoji has-text-white">👂 Poddy</Link>
           </span>
@@ -18,7 +17,6 @@ const NavBar = () => {
           <div className="navbar-item">
             <input type="text" placeholder="Search for podcasts..." className="input is-rounded has-text-weight-bold"></input>
           </div>
-          
         </div>
       </div>
     </nav>
