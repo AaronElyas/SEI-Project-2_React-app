@@ -2,6 +2,15 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const NavBar = () => {
+
+  // const [path, setPath] = useState(null)
+
+  // useEffect(() => {
+  //   console.log(window.location.pathname)
+  //   setPath(window.location.pathname)
+  // }, [])
+
+
   return (
     <nav className="navbar is-link">
       <div className="container">
@@ -11,12 +20,12 @@ const NavBar = () => {
           </span>
         </div>
         <div className="navbar-end">
-          <div className="navbar-item">
-            <Link to="/randompodcast"><button type='button' className='button is-fullwidth is-rounded is-warning has-text-weight-bold'>Find a random podcast!</button></Link>
-          </div>
-          <div className="navbar-item">
-            <input type="text" placeholder="Search for podcasts..." className="input is-rounded has-text-weight-bold"></input>
-          </div>
+          {window.location.pathname === '/randompodcast' ?
+            <div></div>
+            : < div className="navbar-item">
+              <Link to="/randompodcast"><button type='button' className='button is-fullwidth is-rounded is-warning has-text-weight-bold'>Find a random podcast!</button></Link>
+            </div>
+          }
         </div>
       </div>
     </nav>
