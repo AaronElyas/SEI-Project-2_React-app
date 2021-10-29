@@ -14,7 +14,6 @@ const PodcastShow = () => {
         const { data } = await axios.get(`https://listen-api.listennotes.com/api/v2/podcasts/${id}?next_episode_pub_date=1479154463000&sort=recent_first`, {
           headers: { 'X-ListenAPI-Key': process.env.REACT_APP_ListenNotesKey },
         })
-        console.log(data)
         setSinglePod(data)
       } catch {
         setErrors(true)

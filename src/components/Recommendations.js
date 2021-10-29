@@ -17,7 +17,6 @@ const Recommendations = () => { // fomData is a key on the props object, so we a
           {
             headers: { 'X-ListenAPI-Key': process.env.REACT_APP_ListenNotesKey },
           })
-        // console.log(data)
         setPodcasts(data.podcasts)
       } catch (err) {
         setErrors(true)

@@ -4,7 +4,6 @@ import { Link, useLocation } from 'react-router-dom'
 const NavBar = () => {
 
   const location = useLocation()
-  // const [path, setPath] = useState(null)
 
   useEffect(() => {
 
