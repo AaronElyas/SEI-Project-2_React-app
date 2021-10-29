@@ -1,7 +1,4 @@
 
-/* body {
-  background-color: #E3F0FF;
-} */
 
 .ear-emoji {
   font-size: 1.5em;
@@ -12,10 +9,6 @@
   width: 80%;
   margin-top: 20%;
 }
-
-/* #select1, #select2, #select3, #select4 {
-  background-color: #E3F0FF;
-} */
 
 .emoji {
   font-size: 4em;
@@ -29,6 +22,3 @@
   cursor: pointer;
 }
 
-/* .card-text-background {
-  background-color: #FFFADE;
-} */
