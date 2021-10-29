@@ -11,7 +11,7 @@ const GenreRecommendations = () => {
   const [errors, setErrors] = useState(false)
 
   useEffect(() => {
-    console.log(location)
+    // console.log(location)
     const getData = async () => {
       try {
         // eslint-disable-next-line no-undef

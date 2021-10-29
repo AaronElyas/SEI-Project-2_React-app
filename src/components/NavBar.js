@@ -12,7 +12,7 @@ const NavBar = () => {
         </div>
         <div className="navbar-end">
           <div className="navbar-item">
-            <button type='button' className='button is-fullwidth is-rounded is-warning has-text-weight-bold'>Find a random podcast!</button>
+            <Link to="/randompodcast"><button type='button' className='button is-fullwidth is-rounded is-warning has-text-weight-bold'>Find a random podcast!</button></Link>
           </div>
           <div className="navbar-item">
             <input type="text" placeholder="Search for podcasts..." className="input is-rounded has-text-weight-bold"></input>
