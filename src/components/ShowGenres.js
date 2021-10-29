@@ -6,6 +6,8 @@ const ShowGenres = () => {
 
   const [genreData, setGenreData] = useState([])
 
+  const [errors, setErrors] = useState(false)
+
   const emojisObject = {
     144: '💵',
     151: '🏘',
@@ -37,45 +39,45 @@ const ShowGenres = () => {
         const { data: { genres } } = await axios.get('https://listen-api.listennotes.com/api/v2/genres?top_level_only=1', {
           headers: { 'X-ListenAPI-Key': process.env.REACT_APP_ListenNotesKey },
         })
-        console.log(genres)
         setGenreData(genres)
       } catch {
-        console.warn('failure to get API data')
+        setErrors(true)
       }
     }
     getData()
   }, [])
 
-  // const handleClick = (event) => {
-  //   console.log(event.target.value)
-  //   history.push(`/podcastshow/${event.target.value}`)
-  // }
-
 
   return (
-    genreData.map((item) => {
-      return (
-        // <div key={item.id} className="columns is-multiline">
-        <div key={item.id} className="column is-one-third-desktop is-one-half-tablet">
-          <Link to={{ pathname: '/genrerecommendations', state: item.id }}>
-            <div className="card">
-              <div id="emoji-background" className="card-image">
-                <span role="img" aria-label="logo" className="title is-flex is-justify-content-center">
-                  <p className='emoji'>{emojisObject[item.id]}</p>
-                </span>
+    <>
+      {
+        genreData.length ?
+          genreData.map((item) => {
+            return (
+              <div key={item.id} className="column is-one-third-desktop is-one-half-tablet">
+                <Link to={{ pathname: '/genrerecommendations', state: item.id }}>
+                  <div className="card">
+                    <div id="emoji-background" className="card-image">
+                      <span role="img" aria-label="logo" className="title is-flex is-justify-content-center">
+                        <p className='emoji'>{emojisObject[item.id]}</p>
+                      </span>
+                    </div>
+                    <div className='card-footer'>
+                      <h3 className='card-footer-item has-text-weight-bold'>{item.name}</h3>
+                    </div>
+                  </div>
+                </Link >
               </div>
-              <div className='card-footer'>
-                <h3 className='card-footer-item has-text-weight-bold'>{item.name}</h3>
-              </div>
-            </div>
-          </Link >
-        </div>
-        // </div>
-      )
-    })
+            )
+          })
+          :
+          <h2 className="title has-text-centered">
+            {errors ? 'Sorry, something went wrong!' : 'Loading...'}
+          </h2>
+      }
+    </>
   )
+
 }
 
 export default ShowGenres
-
-// value={item.id} onClick={handleClick}

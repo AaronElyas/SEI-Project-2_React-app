@@ -8,6 +8,7 @@ const GenreRecommendations = () => {
   const history = useHistory()
 
   const [podcasts, setPodcasts] = useState([])
+  const [errors, setErrors] = useState(false)
 
   useEffect(() => {
     console.log(location)
@@ -20,7 +21,7 @@ const GenreRecommendations = () => {
           })
         setPodcasts(data.podcasts)
       } catch (err) {
-        console.log(err)
+        setErrors(true)
       }
     }
     getData()
@@ -29,27 +30,35 @@ const GenreRecommendations = () => {
   return (
     <section className="section">
       <div className="container">
-        <div>
-          <h1 className="is-size-3 has-text-centered has-text-weight-bold mb-5">Top Recommendations in Genre</h1>
-        </div>
-        <div className="columns is-multiline">
-          {podcasts.map(podcast => {
-            return (
-              <div key={podcast.id} className="column is-one-quarter-desktop is-one-third-tablet">
-                <div className="card card-cursor" onClick={() => history.push(`/podcastshow/${podcast.id}`)}>
-                  <div className="card-image">
-                    <figure className="image image-is-1by1">
-                      <img src={podcast.image} alt={podcast.title}></img>
-                    </figure>
+        {podcasts.length ?
+          <>
+            <div>
+              <h1 className="is-size-3 has-text-centered has-text-weight-bold mb-5">Top Recommendations in Genre</h1>
+            </div>
+            <div className="columns is-multiline">
+              {podcasts.map(podcast => {
+                return (
+                  <div key={podcast.id} className="column is-one-quarter-desktop is-one-third-tablet">
+                    <div className="card card-cursor" onClick={() => history.push(`/podcastshow/${podcast.id}`)}>
+                      <div className="card-image">
+                        <figure className="image image-is-1by1">
+                          <img src={podcast.image} alt={podcast.title}></img>
+                        </figure>
+                      </div>
+                      <div className="card-content">
+                        <h3 className="has-text-weight-bold">{podcast.title}</h3>
+                      </div>
+                    </div>
                   </div>
-                  <div className="card-content">
-                    <h3 className="has-text-weight-bold">{podcast.title}</h3>
-                  </div>
-                </div>
-              </div>
-            )
-          })}
-        </div>
+                )
+              })}
+            </div>
+          </>
+          :
+          <h2 className="title has-text-centered">
+            {errors ? 'Sorry, something went wrong!' : 'Loading...'}
+          </h2>
+        }
       </div>
     </section>
   )

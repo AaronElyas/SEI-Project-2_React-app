@@ -53,9 +53,6 @@ const Homepage = () => {
     'Vietnamese'
   ]
 
-  // const imageArray = ['💰', '🏘', '🎥', 'assets/tech.jpg', 'assets/crime.jpg', 'assets/arts.jpg', '/assets/business.jpg',
-  //   '/assets/comedy.jpg', '/assets/education.jpg', '/assets/fiction.jpg', '/assets/gov.jpg', '/assets/fitness.jpg', '/assets/history.jpg', '/assets/fam.jpg',
-  //   '/assets/leisure.jpg', '/assets/music.jpg', '/assets/news.jpg', '/assets/religion.jpg', '/assets/science.jpg', '/assets/culture.jpg', '/assets/sports.jpg']
 
   const handleChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
@@ -166,7 +163,6 @@ const Homepage = () => {
                       <option value='100'>Arts</option>
                     </select>
                   </div>
-                  {/* {errors.name && <p className='help is-danger'>{errors.name}</p>} */}
                 </div>
                 <div className='field pt-2 px-5'>
                   <label className='label'>Country</label>
