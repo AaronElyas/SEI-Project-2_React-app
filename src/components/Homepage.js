@@ -44,7 +44,7 @@ const Homepage = () => {
 
   const handleChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
-    console.log(newFormData)
+    // console.log(newFormData)
     setFormData(newFormData)
   }
 

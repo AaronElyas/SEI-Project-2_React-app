@@ -6,7 +6,7 @@ const Recommendations = () => { // fomData is a key on the props object, so we a
 
   const location = useLocation()
   const history = useHistory()
-  const [podcasts, setPodcasts] = useState([])
+  const [podcasts, setPodcasts] = useState(null)
   const [errors, setErrors] = useState(false)
 
   useEffect(() => {
@@ -17,6 +17,7 @@ const Recommendations = () => { // fomData is a key on the props object, so we a
           {
             headers: { 'X-ListenAPI-Key': process.env.REACT_APP_ListenNotesKey },
           })
+        // console.log(data)
         setPodcasts(data.podcasts)
       } catch (err) {
         setErrors(true)
@@ -30,7 +31,7 @@ const Recommendations = () => { // fomData is a key on the props object, so we a
 
     <section className="section">
       <div className="container">
-        {podcasts.length ?
+        {podcasts ?
           <>
             <div>
               <h1 className="is-size-3 has-text-centered has-text-weight-bold mb-5">Your Podcast Recommendations</h1>
