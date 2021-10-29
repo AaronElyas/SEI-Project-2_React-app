@@ -25,26 +25,6 @@ const Recommendations = () => { // fomData is a key on the props object, so we a
     getData()
   }, [])
 
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault()
-  //   try {
-  //     const { data } = await axios.get(`https://listen-api.listennotes.com/api/v2/best_podcasts?genre_id=${genre}&page=2&publisher_region=${country}&language=${language}&sort=listen_score&safe_mode=${excludeExplicitContent}`,
-  //       {
-  //         headers: { 'X-ListenAPI-Key': process.env.REACT_APP_ListenNotesKey },
-  //       })
-  //     console.log(data.podcasts)
-  //     history.push('/recommendations')
-  //     setFormData(data)
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
-
-  // const handleClick = (event) => {
-  //   console.log(event.target.value)
-  //   history.push(`/podcastshow/${event.target.dataset.id}`)
-  // }
-
 
   return (
 

@@ -1,21 +1,10 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-// import axios from 'axios'
-// import Recommendations from './Recommendations'
 import ShowGenres from './ShowGenres'
 
 const Homepage = () => {
 
-  // const [genre, setGenre] = useState('')
-  // const [country, setCountry] = useState('us')
-  // const [language, setLanguage] = useState('English')
-  // const [excludeExplicitContent, setExcludeExplicitContent] = useState('1')
   const [formData, setFormData] = useState({ genres: 144 })
-  // const [genreData, setGenreData] = useState([])
-
-  // const [recommendationsURL, setRecommendationsURL] = useState(null)
-
-  // const history = useHistory()
 
   const languages = [
     'Any language',
@@ -53,78 +42,13 @@ const Homepage = () => {
     'Vietnamese'
   ]
 
-
   const handleChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
     console.log(newFormData)
     setFormData(newFormData)
   }
 
-  console.log('location passes the state', formData)
-
-  /* Genres API request: */
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     try {
-  //       const { data: { genres } } = await axios.get('https://listen-api.listennotes.com/api/v2/genres?top_level_only=1', {
-  //         headers: { 'X-ListenAPI-Key': process.env.REACT_APP_ListenNotesKey },
-  //       })
-  //       setGenreData(genres)
-  //       console.log(genres)
-  //     } catch {
-  //       console.warn('failure to get API data')
-  //     }
-  //   }
-  //   getData()
-  // }, [])
-
-
-  // const handleSelect = (event) => {
-  //   if (event.target.name === 'genres') {
-  //     setGenre(event.target.value)
-  //   } else if (event.target.name === 'countries') {
-  //     setCountry(event.target.value)
-  //   } else if (event.target.name === 'languages') {
-  //     setLanguage(event.target.value)
-  //   } else {
-  //     setExcludeExplicitContent(event.target.value)
-  //   }
-  // }
-
-
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault()
-  //   setRecommendationsURL(`https://listen-api.listennotes.com/api/v2/best_podcasts?genre_id=${genre}&page=2&publisher_region=${country}&language=${language}&sort=listen_score&safe_mode=${excludeExplicitContent}`)
-  //   // history.push('/recommendations')
-  //   setFormData(true)
-  // }
-
-
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault()
-  //   try {
-  //     const { data } = await axios.get(`https://listen-api.listennotes.com/api/v2/best_podcasts?genre_id=${genre}&page=2&publisher_region=${country}&language=${language}&sort=listen_score&safe_mode=${excludeExplicitContent}`,
-  //       {
-  //         headers: { 'X-ListenAPI-Key': process.env.REACT_APP_ListenNotesKey },
-  //       })
-  //     console.log(data.podcasts)
-  //     history.push('/recommendations')
-  //     setFormData(data)
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
-
-  // This commented-out useEffect does work to change the URL path to the Recommendations page:
-
-  // useEffect(() => {
-  //   if (recommendationsURL === null) {
-  //     return
-  //   } else {
-  //     history.push('/recommendations')
-  //   }
-  // }, [recommendationsURL])
-
+  // console.log('location passes the state', formData)
 
   return (
     <>
@@ -207,7 +131,6 @@ const Homepage = () => {
                       <option value='zw'>ZW - Zimbabwe</option>
                     </select>
                   </div>
-                  {/* {errors.origin && <p className='help is-danger'>{errors.origin}</p>} */}
                 </div>
                 <div className='field pt-2 px-5'>
                   <label className='label'>Languages</label>
@@ -220,7 +143,6 @@ const Homepage = () => {
                       })}
                     </select>
                   </div>
-                  {/* {errors.image && <p className='help is-danger'>{errors.image}</p>} */}
                 </div>
                 <div className='field pt-2 px-5'>
                   <label className='label'>Exclude explicit content</label>
@@ -230,11 +152,9 @@ const Homepage = () => {
                       <option value='0'>No</option>
                     </select>
                   </div>
-                  {/* {errors.tastingNotes && <p className='help is-danger'>{errors.tastingNotes}</p>} */}
                 </div>
                 <div className='field pt-3 px-5'>
                   <Link to={{ pathname: '/recommendations', state: formData }} className='button is-fullwidth is-link is-rounded has-text-weight-bold mb-3'>Find podcasts!</Link>
-                  {/* <button type='submit' className='button is-fullwidth is-warning'>Find podcasts!</button> */}
                 </div>
               </form >
             </div>
@@ -261,23 +181,3 @@ const Homepage = () => {
 }
 
 export default Homepage
-
-// Homepage plan
-
-// Make separate NavBar component (child of Homepage) and import in
-// Add some basic markup for Filter Panel and Discover By Genre
-
-
-// Filter Panel
-
-// Set up pieces of state using useState hook
-// Add event listeners to dropdown inputs in the Filter Panel Form
-// Add event listener to the Filter Panel Form
-// Create handleChange function
-// Create handleClick function
-
-
-// Discover By Genre
-
-
-// <Recommendations formData={formData}/>

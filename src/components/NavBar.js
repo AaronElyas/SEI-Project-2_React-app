@@ -1,15 +1,14 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
 const NavBar = () => {
 
+  const location = useLocation()
   // const [path, setPath] = useState(null)
 
-  // useEffect(() => {
-  //   console.log(window.location.pathname)
-  //   setPath(window.location.pathname)
-  // }, [])
+  useEffect(() => {
 
+  }, [location.pathname])
 
   return (
     <nav className="navbar is-link">
@@ -20,9 +19,8 @@ const NavBar = () => {
           </span>
         </div>
         <div className="navbar-end">
-          {window.location.pathname === '/randompodcast' ?
-            <div></div>
-            : < div className="navbar-item">
+          {location.pathname !== '/randompodcast' && // If both sides of the AND operator are true, this will execute, otherwise if one or more is false(y), everything inside the curly braces will not happen. Here, the second part will always be truthy, so whether it renders or not is dependent on the first part being truthy.
+            < div className="navbar-item">
               <Link to="/randompodcast"><button type='button' className='button is-fullwidth is-rounded is-warning has-text-weight-bold'>Find a random podcast!</button></Link>
             </div>
           }

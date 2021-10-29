@@ -5,7 +5,6 @@ import axios from 'axios'
 const ShowGenres = () => {
 
   const [genreData, setGenreData] = useState([])
-
   const [errors, setErrors] = useState(false)
 
   const emojisObject = {
