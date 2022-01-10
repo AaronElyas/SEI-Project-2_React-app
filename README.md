@@ -49,8 +49,8 @@ App features include:
 ---
 
 <p align="center">
-<img height="280" src="https://user-images.githubusercontent.com/84339614/148825738-189d2b0d-20b6-4cf4-9224-584806160e9a.png" alt="app filter recommendations">
-<img height="280" src="https://user-images.githubusercontent.com/84339614/148825734-1ed4044a-6d22-481d-9a2f-88281ce2fadb.png" alt="app random podcast episode">
+<img height="270" src="https://user-images.githubusercontent.com/84339614/148825738-189d2b0d-20b6-4cf4-9224-584806160e9a.png" alt="app filter recommendations">
+<img height="270" src="https://user-images.githubusercontent.com/84339614/148825734-1ed4044a-6d22-481d-9a2f-88281ce2fadb.png" alt="app random podcast episode">
 </p>
 
 ---
