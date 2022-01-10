@@ -95,11 +95,7 @@ Since time was of the essence in this 48-hour hackathon, we quickly put together
 
 <p align="center">
 <img height="250" src="https://user-images.githubusercontent.com/84339614/148827900-c807b715-afd4-43c6-a37b-acf584b2a02b.png" alt="wireframe homepage">
-<img width="250" src="https://user-images.githubusercontent.com/84339614/148828032-2c0d598a-70ac-41cb-9e07-ce76321d1eaf.png" alt="wireframe recommendations page">
-</p>
-
-<p align="center">
-<img width="550" src="https://user-images.githubusercontent.com/84339614/148828032-2c0d598a-70ac-41cb-9e07-ce76321d1eaf.png" alt="wireframe recommendations page">
+<img height="250" src="https://user-images.githubusercontent.com/84339614/148828032-2c0d598a-70ac-41cb-9e07-ce76321d1eaf.png" alt="wireframe recommendations page">
 </p>
 
 <p align="center">
