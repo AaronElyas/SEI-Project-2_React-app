@@ -94,12 +94,12 @@ Once we had the Key, we tested out several different requests in Insomnia to con
 Since time was of the essence in this 48-hour hackathon, we quickly put together some wireframe diagrams on paper, detailing the features and layout of our app and planning the API requests required for each component.
 
 <p align="center">
-<img height="250" src="https://user-images.githubusercontent.com/84339614/148827900-c807b715-afd4-43c6-a37b-acf584b2a02b.png" alt="wireframe homepage">
-<img height="250" src="https://user-images.githubusercontent.com/84339614/148828032-2c0d598a-70ac-41cb-9e07-ce76321d1eaf.png" alt="wireframe recommendations page">
+<img height="270" src="https://user-images.githubusercontent.com/84339614/148827900-c807b715-afd4-43c6-a37b-acf584b2a02b.png" alt="wireframe homepage">
+<img height="270" src="https://user-images.githubusercontent.com/84339614/148828032-2c0d598a-70ac-41cb-9e07-ce76321d1eaf.png" alt="wireframe recommendations page">
 </p>
 
 <p align="center">
-<img height="250" src="https://user-images.githubusercontent.com/84339614/148828150-5f696338-4e48-468c-bd9f-a7e3bbee77db.png" alt="wireframe podcast show">
+<img height="270" src="https://user-images.githubusercontent.com/84339614/148828150-5f696338-4e48-468c-bd9f-a7e3bbee77db.png" alt="wireframe podcast show">
 </p>
 
 
