@@ -214,7 +214,7 @@ In solving this problem we found another way to pass data between components bes
 
 * **Pair coding** - it was rewarding to practice pair coding, which enabled us to bounce ideas off each other and solve problems in partnership. Having an extra pair of eyes on the code also helps when overcoming errors!
 * **Making the most of the API**  - we implemented 5 different requests to our chosen API to receive a variety of different kinds of data back, including all podcast genre categories, best podcasts lists, individual podcast information, and random podcast data. We made effective use of Insomnia to test each request and view the structure of the data sent back in the response, to determine how to access the fields we wanted to use in our React components.
-* **React Hooks** - we increased our understanding of key React Hooks, including useState, useEffect, useHistory and useLocation.
+* **React Hooks** - we increased our understanding of key React Hooks, including useState and useEffect, and React Router Hooks such as useHistory and useLocation.
 
 
 ## Future Improvements
