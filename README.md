@@ -182,7 +182,7 @@ The ‘Find podcasts!’ button on the filter panel is in fact a link (styled as
 <Link to={{ pathname: '/recommendations', state: formData }} className='button is-fullwidth is-link is-rounded has-text-weight-bold mb-3'>Find podcasts!</Link>
 ```
 
-Then in the Recommendations component, React’s useLocation Hook is used to access the location object: `const location = useLocation()` and through string interpolation and dot notation the user’s filter selections can be accessed from the piece of state stored on the location object, to make the API request to the correct endpoint:
+Then in the Recommendations component, React Router’s useLocation Hook is used to access the location object: `const location = useLocation()` and through string interpolation and dot notation the user’s filter selections can be accessed from the piece of state stored on the location object, to make the API request to the correct endpoint:
 
 ```
  useEffect(() => {
@@ -201,7 +201,7 @@ Then in the Recommendations component, React’s useLocation Hook is used to acc
  }, [])
 ```
 
-In solving this problem we found another way to pass data between components besides using props, and gained experience using React Hooks.
+In solving this problem we found another way to pass data between components besides using props, and gained experience using Hooks.
 
 
 ## Challenges
