@@ -7,7 +7,7 @@ const Homepage = () => {
   const [formData, setFormData] = useState({ genres: 144 })
 
   const languages = [
-    'Any language',
+    'All languages',
     'Afrikaans',
     'Arabic',
     'Bengali',
